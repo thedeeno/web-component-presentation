@@ -1,0 +1,34 @@
+<!-- dependencies -->
+<link rel="import" href="../rapidsynapse-core/rapidsynapse-core.html">
+<link rel="import" href="../rapidsynapse-dial/rapidsynapse-dial.html">
+
+<!-- templates -->
+<template>
+  <style>
+    :host {
+      display: block;
+    }
+
+    #macro {
+      width: 100px;
+      height: 100px;
+    }
+
+    #micro {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+
+  <h2>macro control</h2>
+  <rapidsynapse-dial id="macro"></rapidsynapse-dial>
+
+  <h2>micro control</h2>
+  <rapidsynapse-dial id="micro"></rapidsynapse-dial>
+
+  <h2>value</h2>
+  <input></input>
+</template>
+
+<!-- scripts -->
+<script src="rapidsynapse-tuner.js"></script>

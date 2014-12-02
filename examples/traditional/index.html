@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Traditional Tuner Component</title>
+
+    <link rel="stylesheet" href="rapidsynapse-dial/rapidsynapse-dial.css">
+    <link rel="stylesheet" href="rapidsynapse-tuner/rapidsynapse-tuner.css">
+
+  </head>
+
+  <body>
+    <h1>The Tuner Component</h1>
+
+    <div id="tuner"></div>
+
+    <script src="rapidsynapse-core/rapidsynapse-core.js"></script>
+    <script src="rapidsynapse-dial/rapidsynapse-dial.js"></script>
+    <script src="rapidsynapse-tuner/rapidsynapse-tuner.js"></script>
+
+    <script>
+      window.addEventListener('load', function() {
+        var tunerEl = document.querySelector('#tuner');
+        var tuner = new RapidSynapseTuner(tunerEl, {
+          min: 0,
+          max: 10000,
+          value: 90,
+          macroRatio: 1,
+          microRatio: 4
+        });
+      });
+    </script>
+  </body>
+</html>

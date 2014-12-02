@@ -1,0 +1,54 @@
+<!-- dependencies -->
+<link rel="import" href="../rapidsynapse-core/rapidsynapse-core.html">
+<link rel="import" href="../rapidsynapse-dial/rapidsynapse-dial.html">
+
+<polymer-element name="rapidsynapse-tuner">
+
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      #macro {
+        width: 100px;
+        height: 100px;
+      }
+
+      #micro {
+        width: 300px;
+        height: 300px;
+      }
+    </style>
+
+    <h2>macro control</h2>
+    <rapidsynapse-dial
+      id="macro"
+      min="{{ min }}"
+      max="{{ max }}"
+      value="{{ value }}"
+      ratio="{{ macroRatio }}">
+    </rapidsynapse-dial>
+
+    <h2>micro control</h2>
+    <rapidsynapse-dial
+      id="micro"
+      min="{{ min }}"
+      max="{{ max }}"
+      value="{{ value }}"
+      ratio="{{ microRatio }}">
+    </rapidsynapse-dial>
+
+    <h2>value</h2>
+    <input
+      id="direct"
+      value="{{ prettyValue }}"
+      on-blur="{{ setDialsToValue }}">
+    </input>
+
+  </template>
+
+  <script src="rapidsynapse-tuner.js"></script>
+
+</polymer-element>
+

@@ -1,0 +1,14 @@
+rapidsynapse-tuner {
+  display: block;
+}
+
+rapidsynapse-tuner rapidsynapse-dial.macro {
+  width: 100px;
+  height: 100px;
+}
+
+rapidsynapse-tuner rapidsynapse-dial.micro {
+  width: 300px;
+  height: 300px;
+}
+

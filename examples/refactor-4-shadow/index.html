@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Traditional Tuner Component</title>
+
+    <link rel="import" href="rapidsynapse-tuner/rapidsynapse-tuner.html">
+
+    <style>
+      .tick {
+        margin-top:1em;
+        background:red;
+        width:100px;
+        height:100px;
+      }
+
+      .dragging {
+        cursor: -webkit-grabbing;
+      }
+
+      .dragging /deep/ rapidsynapse-dial:hover {
+        cursor: -webkit-grabbing;
+      }
+    </style>
+
+  </head>
+
+  <body>
+    <h1>The Tuner Component</h1>
+
+    <rapidsynapse-tuner
+      min="0"
+      max="10000"
+      value="90"
+      macro-ratio="1"
+      micro-ratio="4">
+    </rapidsynapse-tuner>
+
+    <div class="tick"></div>
+
+  </body>
+</html>

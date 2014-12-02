@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Traditional Tuner Component</title>
+
+    <link rel="import" href="rapidsynapse-tuner/rapidsynapse-tuner.html">
+
+  </head>
+
+  <body>
+    <h1>The Tuner Component</h1>
+
+    <div id="tuner"></div>
+
+    <script>
+      window.addEventListener('load', function() {
+        var Tuner = window.RapidSynapseTuner;
+        var tunerEl = document.querySelector('#tuner');
+
+        new Tuner(tunerEl, {
+          min: 0,
+          max: 10000,
+          value: 90,
+          macroRatio: 1,
+          microRatio: 4
+        });
+      });
+    </script>
+  </body>
+</html>

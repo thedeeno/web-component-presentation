@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>reveal.js - The HTML Presentation Framework</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/night.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+      strong {
+        color: #e7ad52;
+        font-weight: normal;
+      }
+      .reveal pre code {
+        padding-left: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>HTML Web Components</h1>
+          <h3>The future of web development?</h3>
+          <p>
+            <small>Created by <a href="http://github.com/thedeeno">Dane O'Connor</a> / <a href="http://twitter.com/thedeeno">@thedeeno</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>Survey</h2>
+        </section>
+
+        <section>
+          <h2>Goal</h2>
+          <p>Understand the tech driving a more composable web</p>
+        </section>
+
+        <section>
+          <section>
+            <h2>How we'll get there</h2>
+            <p>&darr;</p>
+          </section>
+          <section>
+            <h2>The Big Picture</h2>
+            <ul>
+              <li>What are web components?</li>
+              <li>What is google polymer?</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Practical Example</h2>
+            <p>Refactor a well-written traditional component</p>
+          </section>
+          <section>
+            <h2>Adoption Challenges</h2>
+            <p>What's in the way?</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>The Big Picture</h2>
+        </section>
+
+        <section>
+          <section>
+            <h2>Web Components</h2>
+            <ul>
+              <li class="fragment">Are <strong>not</strong> a Silver bullet</li>
+              <li class="fragment">Are <strong>not</strong> just for UI</li>
+              <li class="fragment">Are <strong>not</strong> an application framework</li>
+            </ul>
+            <p>&darr;</p>
+          </section>
+          <section>
+            <h2>Web Components</h2>
+            <p>are a <strong>suite</strong> of standards</p>
+            <ul class="fragment">
+              <li>HTML Imports</li>
+              <li>Templates</li>
+              <li>Shadow DOM</li>
+              <li>Custom Elements</li>
+            </ul>
+            <p class="fragment" style="margin-top:.5em">that <strong>increase our</strong>
+            application's</p>
+            <ul class="fragment">
+              <li>expressiveness</li>
+              <li>reusability</li>
+              <li>indepedence</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Polymer</h2>
+            <p><span class="fragment">The WC Standards</span><span class="fragment"> + Declarative Sugar</span><span class="fragment"> + Data-Binding</p>
+            <h4></h4>
+            <p class="fragment">An <strong>opinionated</strong> way to create web components</p>
+            <p class="fragment">and also Polyfills for browser support</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>That's all there is too it</h2>
+        </section>
+
+        <section>
+          <h2><strong>Bye</strong> <strong>Bye</strong> Theory Land</h2>
+        </section>
+
+        <section>
+          <h2>Practical Example</h2>
+          <h3><strong>progressive refactoring</strong></h2>
+        </section>
+
+        <section>
+          <h2>To the Code!</h2>
+          <a href="examples/traditional/index.html">the tuner component</a>
+        </section>
+
+        <section>
+          <h2>First Smell?</h2>
+        </section>
+
+        <section>
+          <h2>HTML Imports: <strong>Abstract</strong></h2>
+          <p>include and reuse HTML documents in other HTML documents.</p>
+        </section>
+
+        <section>
+          <h2>HTML Imports: <strong>Usage</strong></h2>
+          <pre><code data-trim contenteditable style="padding-left:20px;">
+<link rel="import" href="path/to/resource.html">
+          </code></pre>
+          <h4>OR</h4>
+          <pre><code data-trim contenteditable style="padding-left:20px;">
+var link = document.createElement('link');
+link.rel = 'import';
+link.href = 'path/to/resource.html'
+link.onload = function(e) {...};
+link.onerror = function(e) {...};
+document.head.appendChild(link);
+
+// you can work with the imported document
+var content = document.querySelector('link[rel="import"]').import;
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Refactor 1</h2>
+          <h4><strong>results</strong></h4>
+        </section>
+
+        <section>
+          <h2>Next Smell?</h2>
+        </section>
+
+        <section>
+          <h2>Custom Elements: <strong>Abstract</strong></h2>
+          <p>define and register new DOM elements</p>
+        </section>
+
+        <section>
+          <h2>Custom Elements: <strong>Registration</strong></h2>
+          <h4>default prototype</h4>
+          <pre><code data-trim contenteditable>
+document.registerElement('x-foo');
+          </code></pre>
+          <h4>custom prototype</h4>
+          <pre><code data-trim contenteditable>
+var myProto = Object.create(HTMLElement.prototype);
+myProto.awesome = function() { alert('yeah!') };
+document.registerElement('x-foo', { prototype: myProto });
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Custom Elements: <strong>Instantiation</strong></h2>
+          <h4>Declare</h4>
+          <pre><code data-trim contenteditable>
+<x-foo></x-foo>
+          </code></pre>
+          <h4>DOM manipulation</h4>
+          <pre><code data-trim contenteditable>
+var xFoo = document.createElement('x-foo');
+          </code></pre>
+          <h4>`new` Operator</h4>
+          <pre><code data-trim contenteditable>
+var xFoo = new XFoo();
+document.body.appendChild(xFoo);
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Refactor 2</h2>
+          <h4><strong>results</strong></h4>
+        </section>
+
+        <section>
+          <h2>Next Smell?</h2>
+        </section>
+
+        <section>
+          <h2>Templates: <strong>Abstract</strong></h2>
+          <p>Inert HTML</p>
+        </section>
+
+        <section>
+          <h2>Templates: <strong>Usage</strong></h2>
+          <h4>declaration</h4>
+          <pre><code data-trim contenteditable>
+<template id="mytemplate">
+  <div>my content</div>
+</template>
+          </code></pre>
+          <h4>activation</h4>
+          <pre><code data-trim contenteditable>
+// clone and append the template
+var t = document.querySelector('mytemplate');
+var clone = document.importNode(t, true);
+document.body.appendChild(clone);
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Templates: <strong>Notes</strong></h2>
+          <pre><code data-trim contenteditable>
+<template id="mytemplate">
+  <div>my content</div>
+</template>
+          </code></pre>
+          <ul>
+            <li class="fragment">Content is parsed but stays inert until activated</li>
+            <li class="fragment">Script tags don't run, images don't load, etc</li>
+            <li class="fragment">Content is NOT considered part of the document</li>
+            <li class="fragment">Can be placed anywhere</li>
+          </ul>
+          </p></p>
+          <p class="fragment">No more hacks!</p>
+        </section>
+
+        <section>
+          <h2>Refactor 3</h2>
+          <h4><strong>results</strong></h4>
+        </section>
+
+        <section>
+          <h2>Next Smell?</h2>
+        </section>
+
+        <section>
+          <h2>ShadowDOM: <strong>Abstract</strong></h2>
+          <p>Create and layout isolated DOM trees</p>
+        </section>
+
+        <section>
+          <h2>ShadowDOM: <strong>Usage</strong></h2>
+          <h4>initial DOM</h4>
+<pre class="fragment"><code data-trim contenteditable>
+<style>my-foo { background: red; }</style>
+<my-foo>
+  <my-bar></my-bar>
+</my-foo>
+          </code></pre>
+          <h4 class="fragment">create and inject shadow root</h4>
+          <pre class="fragment"><code data-trim contenteditable>
+var host = document.querySelector('#my-bar');
+var root = host.createShadowRoot();
+root.innerHTML = [
+  '<style>my-foo { background: red; }</style>'
+  '<my-foo></my-foo>'
+].join('\n');
+          </code></pre>
+
+          <h4 class="fragment">result</h4>
+          <pre class="fragment"><code data-trim contenteditable>
+<style>my-foo { background: red; }</style>
+
+<my-foo><!-- red -->
+  <my-bar>
+    $shadowRoot$
+      <style>my-foo { background: blue; }</style>
+      <my-foo></my-foo><!-- blue -->
+  </my-bar>
+</my-foo>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Refactor 4</h2>
+          <h4><strong>results</strong></h4>
+        </section>
+
+        <section>
+          <h2>Next Smell?</h2>
+        </section>
+
+        <section>
+          <h2>Polymer: <strong>Abstract</strong></h2>
+          <p>An opinionated way to do everything we just did</p>
+        </section>
+
+        <section>
+          <h2>Polymer: <strong>Usage</strong></h2>
+          <h4>a convention to leverage</h4>
+          <pre><code data-trim contenteditable>
+<link rel="import" href="polymer.html">
+
+<polymer-element name="rapidsynapse-dial">
+  <template>
+    <!-- content -->
+  </template>
+  <script type="text/javascript">
+    Polymer({
+      <!-- prototype -->
+    });
+  </script>
+</polymer-element>
+          </code></pre>
+          <ul>
+            <li>Templates</li>
+            <li>ShadowDOM</li>
+            <li>CustomElements</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Polymer: <strong>Usage Cont.</strong></h2>
+          <h4>declarative sugar and databinding</h4>
+          <pre><code data-trim contenteditable style="max-height:600px;">
+<polymer-element name="rapidsynapse-dial">
+  <template>
+    <div on-click="{{ increment }}">{{ formattedMessage }}</div>
+  </template>
+  <script type="text/javascript">
+    Polymer({
+      // read-write (bindable)
+      publish: {
+        'message': 'hello world'
+      },
+      // read-only (bindable)
+      computed: {
+        'formattedMessage': 'format(message)'
+      },
+      // private
+      count: 0,
+      // methods
+      formatMessage: function(message) {
+        return 'foo bar' + this.count;
+      },
+      increment: function() {
+        this.count = this.count + 1;
+      }
+    });
+  </script>
+</polymer-element>
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Refactor 5</h2>
+          <h4><strong>results</strong></h4>
+        </section>
+
+        <section>
+          <h2>Review</h2>
+        </section>
+
+        <section>
+          <h2>Challenges</h2>
+          <p class="fragment">debug issues</p>
+          <p class="fragment">tooling (like testing)</p>
+          <p class="fragment">browser support</p>
+          <p class="fragment">performance</p>
+        </section>
+
+        <section>
+          <h2>Conclusion</h2>
+        </section>
+
+        <section>
+          <h2>Thanks!</h2>
+          <h3>Questions?</h3>
+          <p>
+            <small>Created by <a href="http://github.com/thedeeno">Dane O'Connor</a> / <a href="http://twitter.com/thedeeno">@thedeeno</a></small>
+          </p>
+          <p>
+          <small>Contact: <strong>dane@rapidsynapse.com</strong></small>
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
